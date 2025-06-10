@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-function Square({ value, onSquareClick }) {
+function Square({
+  value,
+  onSquareClick,
+}: {
+  value: string;
+  onSquareClick: () => void;
+}) {
   return (
     <button className="square" onClick={onSquareClick}>
       {value}
@@ -52,19 +58,27 @@ export default function Game() {
           <ol>{moves}</ol>
         </div>
       </div>
-      <div>
+      <aside>
         <a
           href="https://ja.react.dev/learn/tutorial-tic-tac-toe"
           rel="external noopener noreferrer"
         >
           チュートリアル：三目並べ – React
         </a>
-      </div>
+      </aside>
     </>
   );
 }
 
-function Board({ xIsNext, squares, onPlay }) {
+function Board({
+  xIsNext,
+  squares,
+  onPlay,
+}: {
+  xIsNext: boolean;
+  squares: string[];
+  onPlay: (squares: string[]) => void;
+}) {
   function handleClick(i: number) {
     if (squares[i] || calculateWinner(squares)) {
       return;
